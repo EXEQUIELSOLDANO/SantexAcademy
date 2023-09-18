@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         'azul-bg': '#1F51B1', // Color del background general
         'azul-button': '#131174', // Color de los botones (iniciar - usuarios - estadisticas - etc)
+        'gris-contenedor': '#d9d9d9'
       },
     },
   },
