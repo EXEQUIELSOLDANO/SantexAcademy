@@ -13,6 +13,10 @@ export class UsersListComponent implements OnInit {
   admins: any[] = [];
   pollsters: any[] = [];
   users: any[] = [];
+  usersPerPage = 10;
+  totalButtons = 0;
+  currentPage = 0;
+  usersToShow: any[] = [];
 
   constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
 
@@ -24,10 +28,35 @@ export class UsersListComponent implements OnInit {
       this.admins = admins;
       this.pollsters = pollsters;
       this.users = [...this.admins, ...this.pollsters];
+      this.totalButtons = Math.ceil(this.users.length / this.usersPerPage);
+      this.currentPage = 1;
+      this.updateUsersToShow();
     });
   }
 
   redirectTo(){
     this.router.navigate(['/dashboard-admin'])
+  }
+
+  //Pasar el totalButtons a formato array para poder utilizar el ngFor
+  getPageNumbers(): number[] {
+    const pageNumbers = [];
+    for (let i = 1; i <= this.totalButtons; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }
+
+  updateUsersToShow() {
+    const startIndex = (this.currentPage - 1) * this.usersPerPage;
+    const endIndex = startIndex + this.usersPerPage;
+    this.usersToShow = this.users.slice(startIndex, endIndex);
+  }
+
+  goToPage(pageNumber: number) {
+    if (pageNumber >= 1 && pageNumber <= this.totalButtons) {
+      this.currentPage = pageNumber;
+      this.updateUsersToShow();
+    }
   }
 }

@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody class="bg-gris-contenedor/20">
-                <tr *ngFor="let user of users" class="text-white border-b-[1px] border-white">
+                <tr *ngFor="let user of usersToShow" class="text-white border-b-[1px] border-white">
                     <td class="py-3 text-center capitalize">{{ user.firstname }}</td>
                     <td class="py-3 text-center capitalize">{{ user.lastname }}</td>
                     <td class="flex justify-center py-3 gap-x-4">
@@ -44,7 +44,7 @@
                 </svg>
             </button>
             <div class="flex">
-                <button class="px-3 py-2 text-white rounded-md bg-azul-button">1</button>
+                <button class="px-3 py-2 text-white rounded-md bg-azul-button" *ngFor="let i of getPageNumbers()" (click)="goToPage(i)">{{ i }}</button>
             </div>
         </div>        
     </section>
