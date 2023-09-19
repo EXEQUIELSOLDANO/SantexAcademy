@@ -9,7 +9,8 @@ import { HeaderDashboardComponent } from './modules/header-dashboard/header-dash
 import { LogoutModalComponent } from './modules/logout-modal/logout-modal.component';
 import { InputContraseniaComponent } from './modules/input-contrasenia/input-contrasenia.component';
 import { InputLoginComponent } from './modules/input-login/input-login.component';
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminSuccessComponent } from './modules/admin-success/admin-success.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderDashboardComponent,
     LogoutModalComponent,
     InputLoginComponent,
-    InputContraseniaComponent
+    InputContraseniaComponent,
+    AdminSuccessComponent
   ],
   imports: [
     BrowserModule,
