@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { AdminsService } from 'src/app/core/services/admins.service';
 import { PollstersService } from 'src/app/core/services/pollsters.service';
@@ -13,7 +14,7 @@ export class UsersListComponent implements OnInit {
   pollsters: any[] = [];
   users: any[] = [];
 
-  constructor(private adminService: AdminsService, private pollsterService: PollstersService){ }
+  constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
 
   ngOnInit(){
      forkJoin([
@@ -26,5 +27,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-
+  redirectTo(){
+    this.router.navigate(['/dashboard-admin'])
+  }
 }
