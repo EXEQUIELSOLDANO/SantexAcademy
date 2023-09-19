@@ -17,6 +17,7 @@ export class UsersListComponent implements OnInit {
   totalButtons = 0;
   currentPage = 0;
   usersToShow: any[] = [];
+  selectedPage = 1;
 
   constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
 
@@ -57,6 +58,7 @@ export class UsersListComponent implements OnInit {
     if (pageNumber >= 1 && pageNumber <= this.totalButtons) {
       this.currentPage = pageNumber;
       this.updateUsersToShow();
+      this.selectedPage = pageNumber; 
     }
   }
 }
