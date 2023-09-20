@@ -12,7 +12,7 @@ export class AdminSuccessComponent implements  OnInit{
   }
  
   redirectToDashboard(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/users-list']);
 }
 
 }
