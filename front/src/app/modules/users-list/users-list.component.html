@@ -1,0 +1,59 @@
+<div class="w-full min-h-screen bg-azul-bg px-9">
+    
+    <app-header-dashboard></app-header-dashboard>
+    
+    <section class="flex flex-col items-center justify-center mt-14">
+        <div class="flex justify-between w-full">
+            <button class="px-4 py-2 text-white rounded-md bg-azul-button">Crear Usuario</button>
+            <input type="text" class="w-40 px-2 rounded-md bg-gris-contenedor/50 placeholder:text-gray-600" placeholder="Buscar">
+        </div>
+
+        <h2 class="mt-10 mb-8 text-2xl text-white uppercase font-farro">lista de usuarios</h2>
+
+        <table class="w-full overflow-hidden rounded-md">
+            <thead class="bg-azul-button h-[50px]">
+                <tr>
+                    <th class="text-lg font-normal text-white font-farro">Nombre</th>
+                    <th class="text-lg font-normal text-white font-farro">Apellido</th>
+                    <th class="text-lg font-normal text-white font-farro">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="bg-gris-contenedor/20">
+                <tr *ngFor="let user of usersToShow; let last = last" [ngClass]="{'border-b-[1px] border-white': !last}" class="text-white">
+                    <td class="py-3 text-center capitalize border-r-[1px] border-white">{{ user.firstname }}</td>
+                    <td class="py-3 text-center capitalize border-r-[1px] border-white">{{ user.lastname }}</td>
+                    <td class="flex justify-center py-3 gap-x-4">
+                        <button class="p-2 bg-green-600 rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M1.75093 14.2466H2.97657L10.5274 6.68493L9.3018 5.45753L1.75093 13.0192V14.2466ZM14.27 5.4137L10.5493 1.73151L11.775 0.50411C12.1106 0.168037 12.5229 0 13.012 0C13.5011 0 13.9132 0.168037 14.2482 0.50411L15.4738 1.73151C15.8094 2.06758 15.9845 2.47321 15.9991 2.94838C16.0137 3.42356 15.8532 3.82889 15.5176 4.16438L14.27 5.4137ZM13.0006 6.70685L3.72072 16H0V12.274L9.27991 2.98082L13.0006 6.70685ZM9.91462 6.07123L9.3018 5.45753L10.5274 6.68493L9.91462 6.07123Z" fill="white" fill-opacity="0.9"/>
+                            </svg>
+                        </button>
+                        <button class="p-2 bg-red-700 rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+                                <path d="M1 4.55556H15M6.25 8.11111V13.4444M9.75 8.11111V13.4444M1.875 4.55556L2.75 15.2222C2.75 15.6937 2.93437 16.1459 3.26256 16.4793C3.59075 16.8127 4.03587 17 4.5 17H11.5C11.9641 17 12.4092 16.8127 12.7374 16.4793C13.0656 16.1459 13.25 15.6937 13.25 15.2222L14.125 4.55556M5.375 4.55556V1.88889C5.375 1.65314 5.46719 1.42705 5.63128 1.26035C5.79538 1.09365 6.01794 1 6.25 1H9.75C9.98206 1 10.2046 1.09365 10.3687 1.26035C10.5328 1.42705 10.625 1.65314 10.625 1.88889V4.55556" stroke="white" stroke-opacity="0.9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="flex justify-between w-full my-5">
+            <button class="px-3 py-2 rounded-md bg-azul-button" (click)="redirectTo()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none">
+                    <path d="M0.693375 7.3075C0.377361 7.6239 0.19986 8.05281 0.19986 8.5C0.19986 8.94719 0.377361 9.37609 0.693375 9.6925L7.05638 16.0577C7.21312 16.2145 7.39921 16.3388 7.60401 16.4237C7.80882 16.5085 8.02832 16.5522 8.25 16.5522C8.47168 16.5522 8.69118 16.5085 8.89599 16.4237C9.10079 16.3388 9.28688 16.2145 9.44363 16.0577C9.60037 15.901 9.72471 15.7149 9.80955 15.5101C9.89438 15.3053 9.93804 15.0858 9.93804 14.8641C9.93804 14.6424 9.89438 14.4229 9.80955 14.2181C9.72471 14.0133 9.60037 13.8272 9.44363 13.6705L5.96063 10.1875H18.9375C19.3851 10.1875 19.8143 10.0097 20.1307 9.69324C20.4472 9.37677 20.625 8.94755 20.625 8.5C20.625 8.05244 20.4472 7.62322 20.1307 7.30675C19.8143 6.99029 19.3851 6.8125 18.9375 6.8125H5.96063L9.44363 3.3295C9.76005 3.01293 9.93775 2.58363 9.93764 2.13604C9.93754 1.68845 9.75963 1.25923 9.44306 0.942809C9.12649 0.62639 8.69719 0.448686 8.2496 0.448792C7.80201 0.448897 7.37279 0.626803 7.05638 0.943372L0.693375 7.3075Z" fill="white"/>
+                </svg>
+            </button>
+            <div class="flex gap-x-4">
+                <button 
+                    class="px-3 py-2 text-white rounded-md bg-azul-button focus:bg-red-500"
+                    [ngClass]="{
+                        'bg-sky-600 focus:bg-sky-600': i === selectedPage,
+                        'bg-azul-button focus:bg-azul-button': i !== selectedPage
+                    }"
+                    *ngFor="let i of getPageNumbers();" 
+                    (click)="goToPage(i)"> {{ i }}
+                </button>
+            </div>
+        </div>        
+    </section>
+</div>
