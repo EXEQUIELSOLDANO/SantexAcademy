@@ -6,6 +6,7 @@ import { InputContraseniaComponent } from './modules/input-contrasenia/input-con
 import { InputLoginComponent } from './modules/input-login/input-login.component';
 import { DashboardAdminComponent } from './modules/dashboard-admin/dashboard-admin.component';
 import { PermissionsAdminGuard } from './core/guards/permissions-admin.guard';
+import { UsersListComponent } from './modules/users-list/users-list.component';
 import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component';
 
 const routes: Routes = [
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'dashboard-admin',
     component: DashboardAdminComponent,
+    canActivate: [PermissionsAdminGuard]
+  },
+
+  { path: 'users-list',
+    component: UsersListComponent,
     canActivate: [PermissionsAdminGuard]
   },
 

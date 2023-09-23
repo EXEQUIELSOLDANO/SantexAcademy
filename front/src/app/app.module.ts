@@ -10,7 +10,9 @@ import { LogoutModalComponent } from './modules/logout-modal/logout-modal.compon
 import { InputContraseniaComponent } from './modules/input-contrasenia/input-contrasenia.component';
 import { InputLoginComponent } from './modules/input-login/input-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersListComponent } from './modules/users-list/users-list.component'; 
 import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,7 @@ import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollste
     LogoutModalComponent,
     InputLoginComponent,
     InputContraseniaComponent,
+    UsersListComponent,
     PollsterDashboardComponent
   ],
   imports: [
