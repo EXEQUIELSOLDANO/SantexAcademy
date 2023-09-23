@@ -20,8 +20,10 @@ const routes: Routes = [
   },
 
   { path: 'Contrasenia', component: InputContraseniaComponent },
-  { path: 'user-create-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard]},
-
+  { path: 'user-create-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'creado'}},
+  { path: 'user-update-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'actualizado'}},
+  { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado'}},
+  
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
     path: '**',
