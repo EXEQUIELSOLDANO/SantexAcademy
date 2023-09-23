@@ -7,6 +7,7 @@ import { InputLoginComponent } from './modules/input-login/input-login.component
 import { DashboardAdminComponent } from './modules/dashboard-admin/dashboard-admin.component';
 import { PermissionsAdminGuard } from './core/guards/permissions-admin.guard';
 import { UsersListComponent } from './modules/users-list/users-list.component';
+import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: InputLoginComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   },
 
   { path: 'Contrasenia', component: InputContraseniaComponent },
+  { path: 'dashboard-pollster', component: PollsterDashboardComponent },
 
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
