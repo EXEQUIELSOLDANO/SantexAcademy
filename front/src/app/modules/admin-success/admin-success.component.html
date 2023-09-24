@@ -1,0 +1,48 @@
+<div class="w-full min-h-screen bg-azul-bg px-9">
+  <app-header-dashboard></app-header-dashboard>
+
+  <div class="px-5 bg-gris-contenedor/20  mx-5 my-5 py-10 rounded-lg  mt-32">
+    <div class="text-white text-center text-2xl pt-10 ">
+      <h2>Usuario {{text}} <br>satisfactoriamente</h2>
+    </div>
+    <div class="w-full h-[150px] rounded-lg flex items-stretch  justify-center ">
+      <svg class="pt-5" width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="Mask group" filter="url(#filter0_d_44_211)">
+          <mask id="mask0_44_211" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="0" width="104"
+            height="104">
+            <g id="Group">
+              <g id="Group_2">
+                <path id="Vector"
+                  d="M56 102C62.5673 102.008 69.0716 100.719 75.139 98.2057C81.2064 95.6925 86.7173 92.0049 91.355 87.355C96.0049 82.7173 99.6925 77.2064 102.206 71.139C104.719 65.0716 106.008 58.5673 106 52C106.008 45.4327 104.719 38.9285 102.206 32.8611C99.6923 26.7937 96.0048 21.2828 91.355 16.645C86.7173 11.9951 81.2064 8.30753 75.139 5.79425C69.0716 3.28097 62.5673 1.99153 56 2.00004C49.4327 1.99167 42.9285 3.28117 36.8611 5.79444C30.7937 8.30772 25.2828 11.9952 20.645 16.645C15.9952 21.2828 12.3077 26.7937 9.79444 32.8611C7.28117 38.9285 5.99167 45.4327 6.00004 52C5.99153 58.5673 7.28097 65.0716 9.79425 71.139C12.3075 77.2064 15.9951 82.7173 20.645 87.355C25.2828 92.0048 30.7937 95.6923 36.8611 98.2056C42.9285 100.719 49.4327 102.008 56 102Z"
+                  fill="white" stroke="white" stroke-width="4" stroke-linejoin="round" />
+                <path id="Vector_2" d="M36 52L51 67L81 37" stroke="black" stroke-width="4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </g>
+            </g>
+          </mask>
+          <g mask="url(#mask0_44_211)">
+            <path id="Vector_3" d="M-4 -7.99995H116V112H-4V-7.99995Z" fill="#2CF38A" />
+          </g>
+        </g>
+        <defs>
+          <filter id="filter0_d_44_211" x="0" y="0" width="112" height="112" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha" />
+            <feOffset dy="4" />
+            <feGaussianBlur stdDeviation="2" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_44_211" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_44_211" result="shape" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class="flex justify-center ">
+      <button (click)="redirectToDashboard()"
+        class="bg-azul-button text-white rounded-lg  px-4 py-3 font-farro uppercase tracking-widest text-xs">Regresar</button>
+    </div>
+  </div>
+</div>
