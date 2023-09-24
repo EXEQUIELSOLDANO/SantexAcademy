@@ -14,8 +14,6 @@ import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollste
 const routes: Routes = [
   { path: 'login', component: InputLoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: InputLoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'dashboard-admin',
     component: DashboardAdminComponent,
@@ -30,7 +28,7 @@ const routes: Routes = [
   { path: 'Contrasenia', component: InputContraseniaComponent },
   { path: 'user-create-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'creado'}},
   { path: 'user-update-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'actualizado'}},
-  { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado'}}
+  { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado'}},
   { path: 'dashboard-pollster', component: PollsterDashboardComponent },
     
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
