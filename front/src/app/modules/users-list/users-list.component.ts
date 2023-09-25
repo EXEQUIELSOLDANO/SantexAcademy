@@ -20,6 +20,8 @@ export class UsersListComponent implements OnInit {
   selectedPage = 1;
   isDeleteUserModalOpen = false;
   idUserToDelete = 0;
+  nameUser = '';
+  lastNameUser = '';
   typeUser = '';
 
   constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
@@ -65,9 +67,11 @@ export class UsersListComponent implements OnInit {
     }
   }
 
-  openDeleteUserModal(id: number, type: string){
+  openDeleteUserModal(id: number, name: string, lastname: string, type: string){
     this.isDeleteUserModalOpen = true;
     this.idUserToDelete = id;
+    this.nameUser = name;
+    this.lastNameUser = lastname;
     this.typeUser = type;    
   }
 

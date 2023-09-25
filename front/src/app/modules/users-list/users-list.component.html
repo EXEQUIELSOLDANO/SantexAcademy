@@ -30,7 +30,7 @@
                         </button>
                         <button 
                             class="p-2 bg-red-700 rounded-md"
-                            (click)="openDeleteUserModal(user.id, user.roll)"
+                            (click)="openDeleteUserModal(user.id, user.firstname, user.lastname, user.roll)"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
                                 <path d="M1 4.55556H15M6.25 8.11111V13.4444M9.75 8.11111V13.4444M1.875 4.55556L2.75 15.2222C2.75 15.6937 2.93437 16.1459 3.26256 16.4793C3.59075 16.8127 4.03587 17 4.5 17H11.5C11.9641 17 12.4092 16.8127 12.7374 16.4793C13.0656 16.1459 13.25 15.6937 13.25 15.2222L14.125 4.55556M5.375 4.55556V1.88889C5.375 1.65314 5.46719 1.42705 5.63128 1.26035C5.79538 1.09365 6.01794 1 6.25 1H9.75C9.98206 1 10.2046 1.09365 10.3687 1.26035C10.5328 1.42705 10.625 1.65314 10.625 1.88889V4.55556" stroke="white" stroke-opacity="0.9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,6 +61,9 @@
     </section>
 </div>
 <app-delete-user-modal
+    class="fixed top-0 left-0 flex items-center justify-center w-screen min-h-screen"
+    [name]="nameUser"
+    [lastname]="lastNameUser"
     *ngIf="isDeleteUserModalOpen"
     (closeModal)="closeDeleteUserModal($event)"
     (deleteConfirmed)="deleteUser(typeUser)"
