@@ -14,4 +14,9 @@ export class AdminsService {
     const admins = this.http.get(`${this.apiUrl}/admins/obtener-admin`)
     return admins
   }
+
+  deleteAdmin(id: Number): Observable<any>{
+    const res = this.http.delete(`${this.apiUrl}/admins/eliminar/${id}`, { responseType: 'text' });
+    return res;
+  }
 }

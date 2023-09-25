@@ -14,4 +14,9 @@ export class PollstersService {
     const pollsters = this.http.get(`${this.apiUrl}/pollsters/obtener-pollsters`)
     return pollsters
   }
+
+  deletePollster(id: Number): Observable<any>{
+    const res = this.http.delete(`${this.apiUrl}/pollsters/eliminar/${id}`, { responseType: 'text' });
+    return res;
+  }
 }
