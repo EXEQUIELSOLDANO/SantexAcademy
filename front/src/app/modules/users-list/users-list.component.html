@@ -63,4 +63,5 @@
 <app-delete-user-modal
     *ngIf="isDeleteUserModalOpen"
     (closeModal)="closeDeleteUserModal($event)"
+    (deleteConfirmed)="deleteUser(typeUser)"
 ></app-delete-user-modal>
