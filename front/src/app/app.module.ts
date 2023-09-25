@@ -12,7 +12,8 @@ import { InputLoginComponent } from './modules/input-login/input-login.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminSuccessComponent } from './modules/admin-success/admin-success.component'; 
 import { UsersListComponent } from './modules/users-list/users-list.component'; 
-import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component'; 
+import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component';
+import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-user-modal.component'; 
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollste
     InputContraseniaComponent,
     AdminSuccessComponent,
     UsersListComponent,
-    PollsterDashboardComponent
+    PollsterDashboardComponent,
+    DeleteUserModalComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,9 @@ export class UsersListComponent implements OnInit {
   currentPage = 0;
   usersToShow: any[] = [];
   selectedPage = 1;
+  isDeleteUserModalOpen = false;
+  idUserToDelete = 0;
+  typeUser = '';
 
   constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
 
@@ -60,5 +63,17 @@ export class UsersListComponent implements OnInit {
       this.updateUsersToShow();
       this.selectedPage = pageNumber; 
     }
+  }
+
+  openDeleteUserModal(id: number, type: string){
+    this.isDeleteUserModalOpen = true;
+    this.idUserToDelete = id;
+    this.typeUser = type;    
+  }
+
+  closeDeleteUserModal(event: boolean){
+    if(!event){
+      this.isDeleteUserModalOpen = false;
+    }    
   }
 }
