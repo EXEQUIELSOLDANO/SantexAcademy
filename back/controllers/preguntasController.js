@@ -1,4 +1,4 @@
-const encuestaService = require('../services/encuestaService');
+const encuestaService = require('../services/preguntasService');
 
 // Traer las pregustas de la encuesta
 

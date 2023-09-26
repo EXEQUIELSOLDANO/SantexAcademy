@@ -2,7 +2,7 @@ const Express = require('express');
 const pollsterRoutes = require('./pollsterRoutes');
 const adminRoutes = require('./adminRoutes');
 const loginRoutes = require('./loginRoutes');
-const encuestaRoute = require('./encuestaRoute');
+const encuestaRoute = require('./preguntasRoute');
 const respuestaRoutes = require('./opcionRespRoutes');
 
 // Middlewares:
@@ -22,8 +22,8 @@ app.use('/ping', (req, res) => {
 app.use('/pollsters', pollsterRoutes, rootPath.setHeaders);
 app.use('/admins', adminRoutes, rootPath.setHeaders);
 app.use('/login', loginRoutes);
-app.use('/encuesta', encuestaRoute);
-app.use('/respuestas', respuestaRoutes);
+app.use('/preguntas', encuestaRoute);
+app.use('/opcion-respuestas', respuestaRoutes);
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
