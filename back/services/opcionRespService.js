@@ -9,7 +9,7 @@ async function getAnswer() {
 // Buscar resp por id
 
 async function getById(id) {
-  const respuesta = await db.respuesta.findByPk(id);
+  const respuesta = await db.opcion_respuesta.findByPk(id);
 
   if (respuesta == null) {
     throw new Error('Pregunta no encontrada');

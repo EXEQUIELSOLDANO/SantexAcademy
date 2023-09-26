@@ -3,7 +3,7 @@ const opcionRespController = require('../controllers/opcionRespController');
 
 const router = express.Router();
 
-router.get('/respuesta', opcionRespController.getAllAnswer);
-router.get('/respuesta/:id', opcionRespController.getAnsweryId);
+router.get('/respuestas', opcionRespController.getAllAnswer);
+router.get('/respuestas/:id', opcionRespController.getAnsweryId);
 
 module.exports = router;

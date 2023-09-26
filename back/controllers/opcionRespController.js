@@ -3,7 +3,7 @@ const opcionRespService = require('../services/opcionRespService');
 // Traer las respuestas de la encuesta
 
 async function getAllAnswer(req, res) {
-  const answer = await opcionRespService.getPoll();
+  const answer = await opcionRespService.getAnswer();
   res.status(200).send(answer);
 }
 
