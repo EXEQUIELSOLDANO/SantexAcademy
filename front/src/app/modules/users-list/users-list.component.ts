@@ -18,6 +18,11 @@ export class UsersListComponent implements OnInit {
   currentPage = 0;
   usersToShow: any[] = [];
   selectedPage = 1;
+  isDeleteUserModalOpen = false;
+  idUserToDelete = 0;
+  nameUser = '';
+  lastNameUser = '';
+  typeUser = '';
 
   constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
 
@@ -60,5 +65,51 @@ export class UsersListComponent implements OnInit {
       this.updateUsersToShow();
       this.selectedPage = pageNumber; 
     }
+  }
+
+  openDeleteUserModal(id: number, name: string, lastname: string, type: string){
+    this.isDeleteUserModalOpen = true;
+    this.idUserToDelete = id;
+    this.nameUser = name;
+    this.lastNameUser = lastname;
+    this.typeUser = type;    
+  }
+
+  closeDeleteUserModal(event: boolean){
+    if(!event){
+      this.isDeleteUserModalOpen = false;
+    }    
+  }
+
+  deleteUser(typeUser: string){
+    let resDeleteAdmin: any;
+    let resDeletePollster: any;
+
+    if(typeUser === 'admin'){ 
+      resDeleteAdmin = this.adminService.deleteAdmin(this.idUserToDelete).subscribe({
+        next: (res) => res
+      });
+      
+      if(!resDeleteAdmin){
+        console.log('Ocurrió un error, no se pudo eliminar este administrador.');
+        return
+      }
+    }else{
+      resDeletePollster = this.pollsterService.deletePollster(this.idUserToDelete).subscribe({
+        next: (res) => res
+      });      
+  
+      if(!resDeletePollster){
+        console.log('Ocurrió un error, no se pudo eliminar este encuestador ', resDeletePollster);
+        return
+      }
+    }  
+
+    //Reseteamos las variables
+    this.isDeleteUserModalOpen = false;
+    this.idUserToDelete = 0;
+
+    //Redirigimos
+    this.router.navigate(['/user-delete-success']);
   }
 }
