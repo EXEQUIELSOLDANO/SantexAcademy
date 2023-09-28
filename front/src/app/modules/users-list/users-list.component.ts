@@ -23,6 +23,7 @@ export class UsersListComponent implements OnInit {
   nameUser = '';
   lastNameUser = '';
   typeUser = '';
+  inputSearch = '';
 
   constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
 
@@ -56,7 +57,18 @@ export class UsersListComponent implements OnInit {
   updateUsersToShow() {
     const startIndex = (this.currentPage - 1) * this.usersPerPage;
     const endIndex = startIndex + this.usersPerPage;
-    this.usersToShow = this.users.slice(startIndex, endIndex);
+
+    // Filtrar usuarios por nombre o apellido
+    const filteredUsers = this.users.filter(user =>
+      user.firstname.toLowerCase().includes(this.inputSearch.toLowerCase()) ||
+      user.lastname.toLowerCase().includes(this.inputSearch.toLowerCase())
+    );
+
+    // Recalcular el total de botones del paginador
+    this.totalButtons = Math.ceil(filteredUsers.length / this.usersPerPage);
+    
+    // Guardar los usuarios que se necesiten mostrar por pagina
+    this.usersToShow = filteredUsers.slice(startIndex, endIndex);
   }
 
   goToPage(pageNumber: number) {
@@ -111,5 +123,9 @@ export class UsersListComponent implements OnInit {
 
     //Redirigimos
     this.router.navigate(['/user-delete-success']);
+  }
+
+  onSearch(){
+    this.updateUsersToShow();
   }
 }
