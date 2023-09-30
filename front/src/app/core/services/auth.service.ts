@@ -14,6 +14,6 @@ export class authService {
     const loginData = { email};
     return this.http.post(`${this.apiUrl}/login/send-otp`, loginData);
   }
-
+ 
   
 }
