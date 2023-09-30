@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 // const admin = require('../models');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const sgMail = require('@sendgrid/mail');
-const passwordService = require('./passwordService');
+const sgMail = require("@sendgrid/mail");
+const passwordService = require("./passwordService");
 // const adminService = require('./adminSerivice');
-const db = require('../models');
+const db = require("../models");
 
 // Función para enviar mail
 function enviarEmail(pass, email) {
@@ -12,8 +12,8 @@ function enviarEmail(pass, email) {
   const textMail = `Tu contraseña es: ${pass}`;
   const msg = {
     to: email,
-    from: 'leo.vm.cba@gmail.com', // Use the email address or domain you verified above
-    subject: 'Contraseña Turisticapp',
+    from: "leo.vm.cba@gmail.com", // Use the email address or domain you verified above
+    subject: "Contraseña Turisticapp",
     text: textMail,
     // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
@@ -27,21 +27,28 @@ function enviarEmail(pass, email) {
       if (error.response) {
         console.error(error.response.body);
       }
-    },
+    }
   );
 }
 
 async function emailLogin(email) {
-  let existeAdmin = false;
+  const [admin, pollster] = await Promise.all([
+    db.admin.findOne({
+      where: {
+        email,
+      },
+    }),
+    db.pollster.findOne({
+      where: {
+        email,
+      },
+    }),
+  ]);
 
-  const admin = await db.admin.findOne({
-    where: {
-      email,
-    },
-  });
+  const user = admin || pollster;
 
-  if (!admin) {
-    throw new Error('El email es incorrecto');
+  if (!user) {
+    throw new Error("El email no existe");
   }
 
   // Llamar función generadora de OTP
@@ -51,16 +58,16 @@ async function emailLogin(email) {
   // eslint-disable-next-line camelcase
   const limit_time = passwordService.limiTime();
   const passCreate = await passwordService.createPassword(pwd, limit_time);
-  console.log('passCreate', passCreate);
-  admin.password_id = passCreate.id;
-  console.log('pass', passCreate.id);
-  console.log('admin', admin);
-  await admin.save();
+  user.password_id = passCreate.id;
+  await user.save();
+  //console.log('passCreate', passCreate);
+  //console.log('pass', passCreate.id);
+  //console.log('admin', admin);
 
   // Confirmar variable de control
   // eslint-disable-next-line prefer-const
-  existeAdmin = true;
-  enviarEmail(passCreate.password, admin.email);
+  const existeAdmin = !!admin;
+  enviarEmail(passCreate.password, user.email);
 
   return { existeAdmin };
 }
@@ -75,18 +82,56 @@ async function verificarPassword(pwd) {
   });
 
   if (!pass) {
-    throw new Error('La contraseña es incorrecta');
-  }
+    throw new Error("La contraseña es incorrecta");
+  } else {
+    //Buscar la pwd en admin y pollster
+    const [admin, pollster] = await Promise.all([
+      db.admin.findOne({
+        where: {
+          password_id: pass.id,
+        },
+      }),
+      db.pollster.findOne({
+        where: {
+          password_id: pass.id,
+        },
+      }),
+    ]);
 
-  const token = jwt.sign({
-    id: db.admin.id,
-    email: db.admin.email,
-    name: db.admin.name,
-    is_admin: true,
-  }, 'ClaveUltraSecreta');
-  return {
-    accessToken: token,
-  };
+    const existeAdmin = !!admin || !!pollster
+
+    // Verificar si la coincidencia se encuentra en admin o pollster
+    if (admin) {
+      console.log("Admin", !!admin)
+      const token = jwt.sign(
+        {
+          id: db.admin.id,
+          email: db.admin.email,
+          name: db.admin.name,
+          is_admin: existeAdmin,
+        },
+        "ClaveUltraSecreta"
+      );
+      return {
+        accessToken: token,
+      };
+
+    } else {
+      console.log("Polls", !!pollster)
+      const token = jwt.sign(
+        {
+          id: db.pollster.id,
+          email: db.pollster.email,
+          name: db.pollster.name,
+          is_admin: existeAdmin,
+        },
+        "ClaveUltraSecreta"
+      );
+      return {
+        accessToken: token,
+      };
+    }
+  }
 }
 
 // Con el id de password buscamos en la tabla de admin el password_id
