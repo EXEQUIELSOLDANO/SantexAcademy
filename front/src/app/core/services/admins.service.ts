@@ -6,9 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminsService {
-  static submitAdmin(usuario: any) {
-    throw new Error('Method not implemented.');
-  }
   private apiUrl = 'http://localhost:3000';
   
   constructor(private http: HttpClient) { }
@@ -17,8 +14,13 @@ export class AdminsService {
     const admins = this.http.get(`${this.apiUrl}/admins/obtener-admin`)
     return admins
   }
+
   submitAdmin(usuario: any): Observable<any> {
     return  usuario = this.http.post(`${this.apiUrl}/admins/crear`, usuario)
-   
+   }
+
+  deleteAdmin(id: Number): Observable<any>{
+    const res = this.http.delete(`${this.apiUrl}/admins/eliminar/${id}`, { responseType: 'text' });
+    return res;
   }
 }
