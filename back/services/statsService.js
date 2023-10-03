@@ -40,7 +40,8 @@ async function getStats(id_pregunta) {
       });
 
       // Calcula el porcentaje en función del total de respuestas para la pregunta
-      const porcentaje = `${((totalRespuestasOpcion / totalRespuestasPregunta) * 100).toFixed(2)}%`;
+      // eslint-disable-next-line max-len
+      const porcentaje = parseFloat(((totalRespuestasOpcion / totalRespuestasPregunta) * 100).toFixed(2));
 
       // Agregar las estadisticas al objeto
       estadisticas[opcionId] = {
