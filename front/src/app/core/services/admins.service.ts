@@ -17,8 +17,8 @@ export class AdminsService {
     const admins = this.http.get(`${this.apiUrl}/admins/obtener-adrmin`)
     return admins
   }
-  submitAdmin(usuario: any) {
-    return  usuario = this.http.post(`${this.apiUrl}/admin/crear`,usuario)
+  submitAdmin(usuario: any): Observable<any> {
+    return  usuario = this.http.post(`${this.apiUrl}/admins/crear`, usuario)
    
   }
 }

@@ -17,8 +17,7 @@ export class PollstersService {
     const pollsters = this.http.get(`${this.apiUrl}/pollsters/obtener-pollsters`)
     return pollsters
   }
-  submitPollsters(usuario: any) {
+  submitPollster(usuario: any): Observable<any> {
     return  usuario = this.http.post(`${this.apiUrl}/pollsters/crear`,usuario)
-   
   }
 }
