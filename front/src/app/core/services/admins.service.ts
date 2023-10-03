@@ -14,7 +14,7 @@ export class AdminsService {
   constructor(private http: HttpClient) { }
 
   getAdmins(): Observable<any>{
-    const admins = this.http.get(`${this.apiUrl}/admins/obtener-adrmin`)
+    const admins = this.http.get(`${this.apiUrl}/admins/obtener-admin`)
     return admins
   }
   submitAdmin(usuario: any): Observable<any> {

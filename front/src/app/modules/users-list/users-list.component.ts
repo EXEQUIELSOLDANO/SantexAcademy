@@ -61,4 +61,8 @@ export class UsersListComponent implements OnInit {
       this.selectedPage = pageNumber; 
     }
   }
+
+  redirectToCreateUser(){
+    this.router.navigate(['create-user'])
+  }
 }

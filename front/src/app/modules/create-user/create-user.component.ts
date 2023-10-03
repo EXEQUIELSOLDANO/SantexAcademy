@@ -78,7 +78,7 @@ export class CreateUserComponent implements OnInit {
       })
     }
     
-    //this.router.navigate(['users-list'])
+    
   }
   redirectToCreateSuccess(): void {
     this.router.navigate(['user-create-success'])
