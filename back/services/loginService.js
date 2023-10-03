@@ -98,11 +98,13 @@ async function verificarPassword(pwd) {
       }),
     ]);
 
-    const existeAdmin = !!admin || !!pollster
+    let existeAdmin;
 
     // Verificar si la coincidencia se encuentra en admin o pollster
     if (admin) {
-      console.log("Admin", !!admin)
+      existeAdmin = true;
+      console.log("Existe Admin:", existeAdmin);
+      console.log("Admin", !!admin);
       const token = jwt.sign(
         {
           id: db.admin.id,
@@ -115,9 +117,10 @@ async function verificarPassword(pwd) {
       return {
         accessToken: token,
       };
-
-    } else {
-      console.log("Polls", !!pollster)
+    } else if (pollster) {
+      existeAdmin = false;
+      console.log("Existe Admin:", existeAdmin);
+      console.log("Polls", !!pollster);
       const token = jwt.sign(
         {
           id: db.pollster.id,
@@ -130,6 +133,9 @@ async function verificarPassword(pwd) {
       return {
         accessToken: token,
       };
+    } else {
+      //throw new Error("La contraseña no está asociada a ningún usuario.");
+      return "La contraseña no está asociada a ningún usuario.";
     }
   }
 }
