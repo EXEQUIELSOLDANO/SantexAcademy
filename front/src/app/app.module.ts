@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminSuccessComponent } from './modules/admin-success/admin-success.component'; 
 import { UsersListComponent } from './modules/users-list/users-list.component'; 
 import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component';
-import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-user-modal.component'; 
+import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-user-modal.component';
+import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-use
     AdminSuccessComponent,
     UsersListComponent,
     PollsterDashboardComponent,
-    DeleteUserModalComponent
+    DeleteUserModalComponent,
+    SendPollSuccessComponent
   ],
   imports: [
     BrowserModule,
