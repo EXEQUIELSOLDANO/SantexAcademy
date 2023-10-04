@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     timestamps: false,
     modelName: 'admin',
-    timestamps: false,
   });
   return Admin;
 };
