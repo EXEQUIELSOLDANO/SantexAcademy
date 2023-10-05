@@ -6,6 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminsService {
+  getUserById(userId: number) {
+    throw new Error('Method not implemented.');
+  }
+  getAdminById(userId: any) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://localhost:3000';
   
   constructor(private http: HttpClient) { }
@@ -22,5 +28,9 @@ export class AdminsService {
   deleteAdmin(id: Number): Observable<any>{
     const res = this.http.delete(`${this.apiUrl}/admins/eliminar/${id}`, { responseType: 'text' });
     return res;
+  }
+
+  updateAdmin(usuario: any, id: Number):Observable<any>{
+    return usuario = this.http.put(`${this.apiUrl}/admins/actualizar/${id}`,usuario)
   }
 }

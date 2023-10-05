@@ -83,6 +83,10 @@ export class UsersListComponent implements OnInit {
   redirectToCreateUser(){
     this.router.navigate(['create-user'])
   }
+  redirectToUpdateUser(id: number, roll: string) {
+    this.router.navigate(['update-user', id, roll])
+    
+  }
 
   openDeleteUserModal(id: number, name: string, lastname: string, type: string){
     this.isDeleteUserModalOpen = true;

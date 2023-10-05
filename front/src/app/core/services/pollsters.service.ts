@@ -24,4 +24,7 @@ export class PollstersService {
     const res = this.http.delete(`${this.apiUrl}/pollsters/eliminar/${id}`, { responseType: 'text' });
     return res;
   }
+  updatePollster(usuario: any, id: Number): Observable<any>{
+    return usuario = this.http.put(`${this.apiUrl}/pollsters/actualizar/${id}`,usuario)
+  }
 }
