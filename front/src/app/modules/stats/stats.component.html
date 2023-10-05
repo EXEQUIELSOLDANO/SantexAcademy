@@ -8,5 +8,33 @@
                 <app-chart [chartType]="'bar'" [chartData]="statsData"></app-chart>
             </div>
         </div>
+
+        <div class="flex flex-col w-full px-3 py-4 rounded-md gap-y-3 bg-gris-contenedor/20">
+            <h3 class="text-xl text-center text-white font-farro">Razones de eleccion turistica</h3>
+            <div class="w-full bg-white rounded">
+                <app-chart [chartType]="'pie'" [chartData]="statsData"></app-chart>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-full px-3 py-4 rounded-md gap-y-3 bg-gris-contenedor/20">
+            <h3 class="text-xl text-center text-white font-farro">Tipo de hospedaje</h3>
+            <div class="w-full bg-white rounded">
+                <app-chart [chartType]="'doughnut'" [chartData]="statsData"></app-chart>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-full px-3 py-4 rounded-md gap-y-3 bg-gris-contenedor/20">
+            <h3 class="text-xl text-center text-white font-farro">Solicitaron info en:</h3>
+            <div class="w-full bg-white rounded">
+                <app-chart [chartType]="'polarArea'" [chartData]="statsData"></app-chart>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-full px-3 py-4 rounded-md gap-y-3 bg-gris-contenedor/20">
+            <h3 class="text-xl text-center text-white font-farro">Tipo de info solicitada: </h3>
+            <div class="w-full bg-white rounded">
+                <app-chart [chartType]="'bar'" [chartData]="statsData"></app-chart>
+            </div>
+        </div>
     </section>
 </div>
