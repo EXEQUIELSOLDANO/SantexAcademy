@@ -10,19 +10,23 @@ export class StatsComponent {
     "estadisticas": {
         "4": {
             "total": 3,
-            "porcentaje": 23.08
+            "opcion": 'Cordoba',
+            "porcentaje": 40
         },
         "5": {
             "total": 5,
+            "opcion": 'Otra ciudad (cba)',
             "porcentaje": 38.46
         },
         "6": {
             "total": 4,
+            "opcion": 'Otra provincia',
             "porcentaje": 30.77
         },
         "7": {
             "total": 1,
-            "porcentaje": 7.69
+            "opcion": 'Otro país',
+            "porcentaje": 26
         }
     }
   }

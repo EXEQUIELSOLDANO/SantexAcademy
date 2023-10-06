@@ -19,18 +19,27 @@ export class ChartComponent implements AfterViewInit {
 
   createChart(): void {
     if (this.chartData) {
-      const labels = Object.keys(this.chartData.estadisticas);
-      console.log(labels)
-      const data = labels.map(key => this.chartData.estadisticas[key].total);
+      const dataLabels = Object.keys(this.chartData.estadisticas);
+      
+      const labels = dataLabels.map(key => this.chartData.estadisticas[key].opcion);
+
+      const data = dataLabels.map(key => this.chartData.estadisticas[key].porcentaje);
+  
 
       const chartOptions: ChartOptions = {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: true,
+        plugins: {
+          title: {
+              display: false
+          }
+        }
       };
 
       const chartData = {
         labels: labels,
         datasets: [{
+          label: 'Porcentaje',
           data: data,
           backgroundColor: [
             'rgba(255, 99, 132, 0.4)',
