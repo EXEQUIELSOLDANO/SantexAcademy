@@ -107,9 +107,9 @@ async function verificarPassword(pwd) {
       console.log("Admin", !!admin);
       const token = jwt.sign(
         {
-          id: db.admin.id,
-          email: db.admin.email,
-          name: db.admin.name,
+          id: admin.id,
+          email: admin.email,
+          name: admin.firstnamename,
           is_admin: existeAdmin,
         },
         "ClaveUltraSecreta"
@@ -123,9 +123,9 @@ async function verificarPassword(pwd) {
       console.log("Polls", !!pollster);
       const token = jwt.sign(
         {
-          id: db.pollster.id,
-          email: db.pollster.email,
-          name: db.pollster.name,
+          id: pollster.id,
+          email: pollster.email,
+          name: pollster.firstname,
           is_admin: existeAdmin,
         },
         "ClaveUltraSecreta"
