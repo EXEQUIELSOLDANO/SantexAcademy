@@ -15,6 +15,10 @@ export class AdminsService {
     return admins
   }
 
+  submitAdmin(usuario: any): Observable<any> {
+    return  usuario = this.http.post(`${this.apiUrl}/admins/crear`, usuario)
+   }
+
   deleteAdmin(id: Number): Observable<any>{
     const res = this.http.delete(`${this.apiUrl}/admins/eliminar/${id}`, { responseType: 'text' });
     return res;

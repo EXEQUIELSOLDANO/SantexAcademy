@@ -79,6 +79,11 @@ export class UsersListComponent implements OnInit {
     }
   }
 
+
+  redirectToCreateUser(){
+    this.router.navigate(['create-user'])
+  }
+
   openDeleteUserModal(id: number, name: string, lastname: string, type: string){
     this.isDeleteUserModalOpen = true;
     this.idUserToDelete = id;
