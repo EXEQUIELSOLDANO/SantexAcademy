@@ -1,17 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserGeneral } from 'src/app/modules/create-user/create-user.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminsService {
-  getUserById(userId: number) {
-    throw new Error('Method not implemented.');
-  }
-  getAdminById(userId: any) {
-    throw new Error('Method not implemented.');
-  }
   private apiUrl = 'http://localhost:3000';
   
   constructor(private http: HttpClient) { }
@@ -33,4 +28,9 @@ export class AdminsService {
   updateAdmin(usuario: any, id: Number):Observable<any>{
     return usuario = this.http.put(`${this.apiUrl}/admins/actualizar/${id}`,usuario)
   }
+
+  getAdminById(idusuario:any):Observable<UserGeneral>{
+    const admin = this.http.get<UserGeneral>(`${this.apiUrl}/admins/obtener/${idusuario}`)
+    return admin
+}
 }
