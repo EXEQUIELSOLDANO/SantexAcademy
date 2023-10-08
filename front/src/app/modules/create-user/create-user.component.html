@@ -48,8 +48,8 @@
                         <label for="tipoUsuario" class="text-lg text-white font-farro">Tipo de usuario</label>
                         <select id="tipoUsuario" class="w-full px-2 py-1.5 rounded-md bg-gris-contenedor"
                             [(ngModel)]="tipoUsuario" name="tipoUsuario">
-                            <option value="admin">Administrador</option>
-                            <option value="encuestador">Encuestador</option>
+                            <option value="admin" [disabled]="tipoUsuario == 'encuestador'">Administrador</option>
+                            <option value="encuestador" [disabled]="tipoUsuario == 'admin'">Encuestador</option>
                         </select>
                     </div>
                     <p class="p-1 mb-3 text-lg text-center text-white bg-red-700 rounded-md font-farro" *ngIf="error">
