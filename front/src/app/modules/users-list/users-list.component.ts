@@ -25,10 +25,10 @@ export class UsersListComponent implements OnInit {
   typeUser = '';
   inputSearch = '';
 
-  constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router){ }
+  constructor(private adminService: AdminsService, private pollsterService: PollstersService, private router: Router) { }
 
-  ngOnInit(){
-     forkJoin([
+  ngOnInit() {
+    forkJoin([
       this.adminService.getAdmins(),
       this.pollsterService.getPollsters()
     ]).subscribe(([admins, pollsters]) => {
@@ -41,7 +41,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  redirectTo(){
+  redirectTo() {
     this.router.navigate(['/dashboard-admin'])
   }
 
@@ -66,7 +66,7 @@ export class UsersListComponent implements OnInit {
 
     // Recalcular el total de botones del paginador
     this.totalButtons = Math.ceil(filteredUsers.length / this.usersPerPage);
-    
+
     // Guardar los usuarios que se necesiten mostrar por pagina
     this.usersToShow = filteredUsers.slice(startIndex, endIndex);
   }
@@ -75,52 +75,56 @@ export class UsersListComponent implements OnInit {
     if (pageNumber >= 1 && pageNumber <= this.totalButtons) {
       this.currentPage = pageNumber;
       this.updateUsersToShow();
-      this.selectedPage = pageNumber; 
+      this.selectedPage = pageNumber;
     }
   }
 
 
-  redirectToCreateUser(){
+  redirectToCreateUser() {
     this.router.navigate(['create-user'])
   }
+  redirectToUpdateUser(id: number, roll: string) {
+    this.router.navigate(['update-user', id, roll])
 
-  openDeleteUserModal(id: number, name: string, lastname: string, type: string){
+  }
+
+  openDeleteUserModal(id: number, name: string, lastname: string, type: string) {
     this.isDeleteUserModalOpen = true;
     this.idUserToDelete = id;
     this.nameUser = name;
     this.lastNameUser = lastname;
-    this.typeUser = type;    
+    this.typeUser = type;
   }
 
-  closeDeleteUserModal(event: boolean){
-    if(!event){
+  closeDeleteUserModal(event: boolean) {
+    if (!event) {
       this.isDeleteUserModalOpen = false;
-    }    
+    }
   }
 
-  deleteUser(typeUser: string){
+  deleteUser(typeUser: string) {
     let resDeleteAdmin: any;
     let resDeletePollster: any;
 
-    if(typeUser === 'admin'){ 
+    if (typeUser === 'admin') {
       resDeleteAdmin = this.adminService.deleteAdmin(this.idUserToDelete).subscribe({
         next: (res) => res
       });
-      
-      if(!resDeleteAdmin){
+
+      if (!resDeleteAdmin) {
         console.log('Ocurrió un error, no se pudo eliminar este administrador.');
         return
       }
-    }else{
+    } else {
       resDeletePollster = this.pollsterService.deletePollster(this.idUserToDelete).subscribe({
         next: (res) => res
-      });      
-  
-      if(!resDeletePollster){
+      });
+
+      if (!resDeletePollster) {
         console.log('Ocurrió un error, no se pudo eliminar este encuestador ', resDeletePollster);
         return
       }
-    }  
+    }
 
     //Reseteamos las variables
     this.isDeleteUserModalOpen = false;
@@ -130,7 +134,7 @@ export class UsersListComponent implements OnInit {
     this.router.navigate(['/user-delete-success']);
   }
 
-  onSearch(){
+  onSearch() {
     this.updateUsersToShow();
   }
 }
