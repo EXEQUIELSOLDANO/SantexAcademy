@@ -31,6 +31,7 @@ async function getStats(id_pregunta) {
     // Array de promesas para las consultas asincrónicas
     const promesasConsulta = opcionesRespuesta.map(async (opcion) => {
       const opcionId = opcion.id;
+      const opcionNombre = opcion.respuesta;
 
       // Contar las respuestas dadas por el encuestado para esta opción de respuesta
       const totalRespuestasOpcion = await db.respuesta.count({
@@ -46,6 +47,7 @@ async function getStats(id_pregunta) {
       // Agregar las estadisticas al objeto
       estadisticas[opcionId] = {
         total: totalRespuestasOpcion,
+        opcion: opcionNombre,
         porcentaje,
       };
     });
