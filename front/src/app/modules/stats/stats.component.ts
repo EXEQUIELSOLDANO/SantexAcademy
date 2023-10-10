@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { StatsService } from 'src/app/core/services/stats.service';
 
@@ -15,7 +16,7 @@ export class StatsComponent implements OnInit {
   tipoInfoSolicitada: any;
   
   
-  constructor(private statsService: StatsService){ }
+  constructor(private statsService: StatsService, private router: Router){ }
 
   statsData = {
     "estadisticas": {
@@ -65,5 +66,9 @@ export class StatsComponent implements OnInit {
       this.solicitaronInfo = solicitaronInfoData;
       this.tipoInfoSolicitada = tipoInfoSolicitadaData;
     });
+  }
+
+  redirectTo(){
+    this.router.navigate(['dashboard-admin'])
   }
 }
