@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('../models/user');
+const { User } = require('../models');
 
-// Crear un usuario
+// Crear un usuario nuevo
 async function createUser(firstname, lastname, dni, phone, adress, email, roll) {
   const user = new User();
   user.firstname = firstname;
