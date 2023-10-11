@@ -4,7 +4,7 @@
     
     <section class="flex flex-col items-center justify-center mt-14">
         <div class="flex justify-between w-full">
-            <button class="px-4 py-2 text-white rounded-md bg-azul-button">Crear Usuario</button>
+            <button class="px-4 py-2 text-white rounded-md bg-azul-button"(click)="redirectToCreateUser()">Crear Usuario</button>
             <input 
                 type="text" 
                 class="w-40 px-2 rounded-md bg-gris-contenedor/50 placeholder:text-gray-600" 
@@ -29,15 +29,14 @@
                     <td class="py-3 text-center capitalize border-r-[1px] border-white">{{ user.firstname }}</td>
                     <td class="py-3 text-center capitalize border-r-[1px] border-white">{{ user.lastname }}</td>
                     <td class="flex justify-center py-3 gap-x-4">
-                        <button class="p-2 bg-green-600 rounded-md">
+                        <button class="p-2 bg-green-600 rounded-md "(click)="redirectToUpdateUser(user.id, user.roll)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M1.75093 14.2466H2.97657L10.5274 6.68493L9.3018 5.45753L1.75093 13.0192V14.2466ZM14.27 5.4137L10.5493 1.73151L11.775 0.50411C12.1106 0.168037 12.5229 0 13.012 0C13.5011 0 13.9132 0.168037 14.2482 0.50411L15.4738 1.73151C15.8094 2.06758 15.9845 2.47321 15.9991 2.94838C16.0137 3.42356 15.8532 3.82889 15.5176 4.16438L14.27 5.4137ZM13.0006 6.70685L3.72072 16H0V12.274L9.27991 2.98082L13.0006 6.70685ZM9.91462 6.07123L9.3018 5.45753L10.5274 6.68493L9.91462 6.07123Z" fill="white" fill-opacity="0.9"/>
                             </svg>
                         </button>
                         <button 
                             class="p-2 bg-red-700 rounded-md"
-                            (click)="openDeleteUserModal(user.id, user.firstname, user.lastname, user.roll)"
-                        >
+                            (click)="openDeleteUserModal(user.id, user.firstname, user.lastname, user.roll)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
                                 <path d="M1 4.55556H15M6.25 8.11111V13.4444M9.75 8.11111V13.4444M1.875 4.55556L2.75 15.2222C2.75 15.6937 2.93437 16.1459 3.26256 16.4793C3.59075 16.8127 4.03587 17 4.5 17H11.5C11.9641 17 12.4092 16.8127 12.7374 16.4793C13.0656 16.1459 13.25 15.6937 13.25 15.2222L14.125 4.55556M5.375 4.55556V1.88889C5.375 1.65314 5.46719 1.42705 5.63128 1.26035C5.79538 1.09365 6.01794 1 6.25 1H9.75C9.98206 1 10.2046 1.09365 10.3687 1.26035C10.5328 1.42705 10.625 1.65314 10.625 1.88889V4.55556" stroke="white" stroke-opacity="0.9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
