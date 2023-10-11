@@ -36,7 +36,7 @@ async function editUser(id, firstname, lastname, dni, phone, adress, email) {
   const user = await getById(id);
 
   if (firstname) {
-    user.name = firstname;
+    user.firstname = firstname;
   }
   if (lastname) {
     user.lastname = lastname;
