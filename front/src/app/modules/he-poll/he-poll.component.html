@@ -2,25 +2,38 @@
   <app-header-dashboard></app-header-dashboard>
   <h2 class="font-farro text-white text-2xl text-center mt-28 mb-2">Cuestionario</h2>
   <form class="flex flex-col items-center justify-center w-full gap-y-5">
-    <div class="w-full bg-gris-contenedor/20 rounded-lg">
+ <!--    <div class="w-full bg-gris-contenedor/20 rounded-lg">
       <p class="font-farro text-white text-center pt-2 text-lg">{{ questions[0]['pregunta'] }}</p>
       <label class="p-3 flex justify-center">
         <input class="mb-3 rounded-lg w-screen" type="text" [name]="'respuesta_' + questions[0]['id']" [(ngModel)]="respuesta"
           (blur)="agregarRespuesta(questions[0]['id'], answerOptions[0]['id'])">
        
       </label>
-    </div>
+    </div> -->
+    <div *ngFor="let question of questions" class="w-full py-4 rounded-lg bg-gris-contenedor/20">
+      <p class="pt-2 text-lg text-center text-white font-farro">{{ question['pregunta'] }}</p>
+      <div *ngFor="let option of answerOptions" class="flex flex-col">
+        
+        <ng-container *ngIf="option['id_pregunta'] === question['id'] && option['id_pregunta'] === 1 ">
+          <label class="flex justify-center p-3">
+            <input 
+              type="text"
+              class="w-screen py-1 mb-3 text-center rounded-lg"
+              [name]="'respuesta_' + question['id']"
+              [(ngModel)]="respuesta"
+              (blur)="agregarRespuesta(question['id'], option['id'])"
+          >
+          </label>
+        </ng-container>
 
-    <div *ngFor="let question of questions" class="w-full bg-gris-contenedor/20 rounded-lg">
-      <p class="font-farro text-white text-center pt-2 text-lg" *ngIf="question['pregunta'] !== 'edad'">{{ question['pregunta'] }}</p>
-      <div *ngFor="let option of answerOptions">
-        <ng-container class="" *ngIf="option['id_pregunta'] === question['id'] && question['pregunta'] !== 'edad'">
-          <label class=" text-white p-6">
+        <ng-container *ngIf="option['id_pregunta'] === question['id'] && question['pregunta'] !== 'edad'">
+          <label class="px-6 py-2 text-white ">
             <input class="" type="radio" [name]="'respuesta_' + question['id']" [value]="option['id_pregunta']"
               (change)="agregarRespuesta(question['id'], option['id'])">
             {{ option['respuesta'] }}
           </label>
         </ng-container>
+        
       </div>
     </div>
   </form>
