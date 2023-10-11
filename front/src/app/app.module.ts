@@ -15,7 +15,8 @@ import { UsersListComponent } from './modules/users-list/users-list.component';
 import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollster-dashboard.component';
 import { CreateUserComponent } from './modules/create-user/create-user.component';
 import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-user-modal.component';
-import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component'; 
+import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component';
+import { HePollComponent } from './modules/he-poll/he-poll.component'; 
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-
     PollsterDashboardComponent,
     CreateUserComponent,
     DeleteUserModalComponent,
-    SendPollSuccessComponent
+    SendPollSuccessComponent,
+    HePollComponent
   ],
   imports: [
     BrowserModule,
