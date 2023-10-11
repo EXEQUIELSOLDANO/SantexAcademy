@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado' } },
   { path: 'dashboard-pollster', component: PollsterDashboardComponent },
   { path: 'send-poll-success', component: SendPollSuccessComponent },
-  { path: 'he-poll', component: HePollComponent },
+  { path: 'poll', component: HePollComponent },
 
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
