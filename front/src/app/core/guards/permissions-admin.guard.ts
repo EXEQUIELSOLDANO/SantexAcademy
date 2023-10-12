@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { Observable } from 'rxjs';
 
@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PermissionsAdminGuard implements CanActivate {
+  constructor(private router: Router) { }
+  
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if( this.hasAdmin() ){
@@ -14,7 +16,7 @@ export class PermissionsAdminGuard implements CanActivate {
     }
 
     //Hacer una redirección
-    // this.router.navigate(['/']);
+    this.router.navigate(['/']);
     
     //Borrar alert de prueba, cuando la redireccion este lista
     alert('No tienes permisos')
