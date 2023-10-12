@@ -12,9 +12,10 @@ import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-
 import { StatsComponent } from './modules/stats/stats.component';
 import { HePollComponent } from './modules/he-poll/he-poll.component';
 import { PermissionsPollsterGuard } from './core/guards/permissions-pollster.guard';
+import { OpenSessionGuard } from './core/guards/open-session.guard';
 
 const routes: Routes = [
-  { path: 'login', component: InputLoginComponent },
+  { path: 'login', component: InputLoginComponent, canActivate: [OpenSessionGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'dashboard-admin',
@@ -28,7 +29,7 @@ const routes: Routes = [
     canActivate: [PermissionsAdminGuard]
   },
 
-  { path: 'Contrasenia', component: InputContraseniaComponent },
+  { path: 'Contrasenia', component: InputContraseniaComponent, canActivate: [OpenSessionGuard]  },
   { path: 'user-create-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'creado' } },
   { path: 'user-update-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'actualizado' } },
   { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado' } },
