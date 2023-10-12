@@ -34,7 +34,7 @@ const routes: Routes = [
   { path :'create-user', component: CreateUserComponent ,  data: { text: 'crear'}},
   { path :'update-user', component: CreateUserComponent , data: { text: 'editar' } },
   { path: 'send-poll-success', component: SendPollSuccessComponent },
-  { path: 'stats', component: StatsComponent },
+  { path: 'stats', component: StatsComponent, canActivate: [PermissionsAdminGuard] },
 
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
