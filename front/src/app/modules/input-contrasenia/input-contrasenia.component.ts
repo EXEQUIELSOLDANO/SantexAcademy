@@ -14,7 +14,8 @@ type password={
   styleUrls: ['./input-contrasenia.component.css']
 })//min 3
 export class InputContraseniaComponent implements OnInit {
-  password = new FormControl("",[Validators.minLength(3), Validators.required])
+  password = new FormControl("",[Validators.minLength(3), Validators.required]);
+  formSubmitted = false;
 
   constructor(private passwordservice: PasswordService,  private router: Router) { }
 
@@ -23,12 +24,11 @@ export class InputContraseniaComponent implements OnInit {
   }
 
   redirectToData() {
-    console.log(console.log(this.password.errors?.['minlength']));
+    this.formSubmitted = true;
     
     if(this.password.valid==false){
       console.log("error");
       return;
-
     }
    
     this.passwordservice.login(this.password.value).subscribe({
