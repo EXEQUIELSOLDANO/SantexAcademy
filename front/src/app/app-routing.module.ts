@@ -11,6 +11,7 @@ import { CreateUserComponent } from './modules/create-user/create-user.component
 import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component';
 import { StatsComponent } from './modules/stats/stats.component';
 import { HePollComponent } from './modules/he-poll/he-poll.component';
+import { PermissionsPollsterGuard } from './core/guards/permissions-pollster.guard';
 
 const routes: Routes = [
   { path: 'login', component: InputLoginComponent },
@@ -31,12 +32,12 @@ const routes: Routes = [
   { path: 'user-create-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'creado' } },
   { path: 'user-update-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'actualizado' } },
   { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado' } },
-  { path: 'dashboard-pollster', component: PollsterDashboardComponent },
+  { path: 'dashboard-pollster', component: PollsterDashboardComponent, canActivate: [PermissionsPollsterGuard] },
   { path :'create-user', component: CreateUserComponent ,  data: { text: 'crear'}},
   { path :'update-user/:id/:roll', component: CreateUserComponent , data: { text: 'editar' } },
-  { path: 'send-poll-success', component: SendPollSuccessComponent },
+  { path: 'send-poll-success', component: SendPollSuccessComponent, canActivate: [PermissionsPollsterGuard] },
   { path: 'stats', component: StatsComponent, canActivate: [PermissionsAdminGuard] },
-  { path: 'poll', component: HePollComponent },
+  { path: 'poll', component: HePollComponent, canActivate: [PermissionsPollsterGuard] },
 
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
