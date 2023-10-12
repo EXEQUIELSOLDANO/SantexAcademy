@@ -16,7 +16,9 @@ import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollste
 import { CreateUserComponent } from './modules/create-user/create-user.component';
 import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-user-modal.component';
 import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component';
-import { HePollComponent } from './modules/he-poll/he-poll.component'; 
+import { StatsComponent } from './modules/stats/stats.component';
+import { ChartComponent } from './modules/chart/chart.component'; 
+import { HePollComponent } from './modules/he-poll/he-poll.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { HePollComponent } from './modules/he-poll/he-poll.component';
     CreateUserComponent,
     DeleteUserModalComponent,
     SendPollSuccessComponent,
+    StatsComponent,
+    ChartComponent,
     HePollComponent
   ],
   imports: [
