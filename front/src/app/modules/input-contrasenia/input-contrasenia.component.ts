@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PasswordService } from 'src/app/core/services/password.service';
 import { HttpClient } from '@angular/common/http'; 
+import jwtDecode from 'jwt-decode';
 
 type password={
   password:string;
@@ -33,8 +34,18 @@ export class InputContraseniaComponent implements OnInit {
     this.passwordservice.login(this.password.value).subscribe({
 
       next:(response) => {
+        //Guardo el token en el local storage
         localStorage.setItem('jwt', `${response.accessToken}`);
-        this.router.navigate(['/dashboard-admin']); // ingresar componente proximo
+
+        //recupero el token y lo decodifico
+        const token = localStorage.getItem('jwt')
+        const decodeToken: any = token !== null ? jwtDecode(token) : null;
+
+        if(decodeToken.is_admin){
+          this.router.navigate(['/dashboard-admin']); // ingresar componente proximo
+        } else{
+          this.router.navigate(['/dashboard-pollster']); // ingresar componente proximo
+        }
         
       },
       error:(error) => {
