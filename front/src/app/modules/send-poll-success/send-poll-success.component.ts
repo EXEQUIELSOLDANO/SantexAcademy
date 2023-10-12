@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './send-poll-success.component.html',
   styleUrls: ['./send-poll-success.component.css']
 })
-export class SendPollSuccessComponent implements OnInit {
+export class SendPollSuccessComponent  implements OnInit{
 
   constructor(private router: Router) {
 

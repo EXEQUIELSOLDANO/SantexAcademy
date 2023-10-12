@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserGeneral } from 'src/app/modules/create-user/create-user.component';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,13 @@ export class PollstersService {
     const res = this.http.delete(`${this.apiUrl}/pollsters/eliminar/${id}`, { responseType: 'text' });
     return res;
   }
+  updatePollster(usuario: any, id: Number): Observable<any>{
+    return usuario = this.http.put(`${this.apiUrl}/pollsters/actualizar/${id}`,usuario)
+  }
+
+  getOnePollsterById(idusuario:any):Observable<UserGeneral>{
+    const pollster = this.http.get<UserGeneral>(`${this.apiUrl}/pollsters/obtener/${idusuario}`)
+    return pollster
+  }
+
 }

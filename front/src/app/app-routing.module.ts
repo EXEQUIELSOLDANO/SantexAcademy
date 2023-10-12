@@ -10,6 +10,7 @@ import { PollsterDashboardComponent } from './modules/pollster-dashboard/pollste
 import { CreateUserComponent } from './modules/create-user/create-user.component';
 import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component';
 import { StatsComponent } from './modules/stats/stats.component';
+import { HePollComponent } from './modules/he-poll/he-poll.component';
 
 const routes: Routes = [
   { path: 'login', component: InputLoginComponent },
@@ -32,9 +33,10 @@ const routes: Routes = [
   { path: 'user-delete-success', component: AdminSuccessComponent, canActivate: [PermissionsAdminGuard], data: { text: 'eliminado' } },
   { path: 'dashboard-pollster', component: PollsterDashboardComponent },
   { path :'create-user', component: CreateUserComponent ,  data: { text: 'crear'}},
-  { path :'update-user', component: CreateUserComponent , data: { text: 'editar' } },
+  { path :'update-user/:id/:roll', component: CreateUserComponent , data: { text: 'editar' } },
   { path: 'send-poll-success', component: SendPollSuccessComponent },
   { path: 'stats', component: StatsComponent, canActivate: [PermissionsAdminGuard] },
+  { path: 'poll', component: HePollComponent },
 
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
@@ -49,4 +51,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

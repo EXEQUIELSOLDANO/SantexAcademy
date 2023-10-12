@@ -18,6 +18,7 @@ import { DeleteUserModalComponent } from './modules/delete-user-modal/delete-use
 import { SendPollSuccessComponent } from './modules/send-poll-success/send-poll-success.component';
 import { StatsComponent } from './modules/stats/stats.component';
 import { ChartComponent } from './modules/chart/chart.component'; 
+import { HePollComponent } from './modules/he-poll/he-poll.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ChartComponent } from './modules/chart/chart.component';
     DeleteUserModalComponent,
     SendPollSuccessComponent,
     StatsComponent,
-    ChartComponent
+    ChartComponent,
+    HePollComponent
   ],
   imports: [
     BrowserModule,
