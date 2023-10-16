@@ -57,7 +57,7 @@ export class StatsComponent implements OnInit {
       this.getStatsData(3),
       this.getStatsData(6),
       this.getStatsData(8),
-      this.getStatsData(11),
+      this.getStatsData(12),
       this.getStatsData(13),
     ]).subscribe(([procedenciaData, razonesData, tipoHospedajeData, solicitaronInfoData, tipoInfoSolicitadaData]) => {
       this.procedencia = procedenciaData;
