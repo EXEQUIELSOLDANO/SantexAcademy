@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PermissionsAdminGuard implements CanActivate {
-  constructor(private router: Router) { }
-  
+export class PermissionsPollsterGuard implements CanActivate {
+
+  constructor(private router: Router) {}
+
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if( this.hasAdmin() ){
+    if( this.hasPollster() ){
       return true;
     }
 
@@ -25,15 +26,15 @@ export class PermissionsAdminGuard implements CanActivate {
     return false;
   }
 
-  hasAdmin():boolean {
+  hasPollster():boolean {
     //recupero el jwt del localStorage
     const jwt = localStorage.getItem('jwt');    
 
     //Si hay un token disponible decodifico el token
     if(jwt !== null){
       const decodeToken: any = jwtDecode(jwt);
-
-      return decodeToken.is_admin;
+    
+      return !decodeToken.is_admin;     
       
     }
 

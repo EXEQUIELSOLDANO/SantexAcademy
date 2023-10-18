@@ -1,32 +1,30 @@
-<section class="h-screen  w-full bg-azul-bg">
+<section class="w-full h-screen bg-azul-bg">
     <h1 class=" text-white font-lobster text-center text-6xl pt-16 mb-[128px] ">Turisticapp</h1>
-    <div class=" flex ">
-
-        <div class="px-5 bg-gris-contenedor/20  w-full m-5 py-12 rounded-lg">
-
+    <div class="flex">
+        <div class="w-full px-5 py-12 m-5 rounded-lg bg-gris-contenedor/20">
 
             <form class="space-y-5">
                 <div>
-                    <label for="email" class=" block mb-2  text-white text-lg font-farro">Ingrese su email</label>
+                    <label for="email" class="block mb-2 text-lg text-white font-farro">Ingrese su email</label>
                     <input type="email" id="email" name="email" [formControl]="email" required
-                        class="bg-white/50 border-gray-300 text-black rounded-lg block w-full p-2  ">
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-
-                        <div *ngIf="email.errors?.['required']">
-                            El email es requerido.
-                        </div>
-                        <div *ngIf="email.errors?.['email']">
-                            debe escribir un email valido
-                        </div>
-                    </div>
+                        class="block w-full p-2 text-center text-black border-gray-300 rounded-lg bg-white/50">
                 </div>
-                <div class=" flex flex-row-reverse ">
+                <div class="flex flex-row-reverse ">
                     <button (click)="redirectToContra()"
-                        class="bg-azul-button text-white rounded-lg  px-8 py-3 font-farro uppercase tracking-widest  ">Iniciar</button>
+                        class="px-8 py-3 tracking-widest text-white uppercase rounded-lg bg-azul-button font-farro ">Iniciar</button>
 
                 </div>
             </form>
+        </div>
+    </div>
+    
+    <div *ngIf="formSubmitted && email.invalid" class="w-[90%] mx-auto px-5 py-2 bg-red-600 rounded-md">
 
+        <div *ngIf="email.errors?.['required']" class="text-lg text-center text-white font-farro">
+            El email es requerido.
+        </div>
+        <div *ngIf="email.errors?.['email']" class="text-lg text-center text-white font-farro">
+            Debe escribir un email valido
         </div>
     </div>
 </section>
